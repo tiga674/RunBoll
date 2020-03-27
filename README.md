@@ -1,2 +1,2 @@
-# RunBoll
+# ShootingStar
 Unityで作ったゲームです
