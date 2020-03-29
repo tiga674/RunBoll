@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
+    Vector3 diff;
+
     public GameObject player;
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        diff = player.transform.position - transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 playerpos = player.transform.position;
-        playerpos.y += 1;
-        playerpos.z -= 3;
-        Camera.main.transform.position = playerpos;
+        transform.position = player.transform.position - diff;
     }
 }
