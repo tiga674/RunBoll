@@ -8,8 +8,8 @@ public class GameManage : MonoBehaviour
 {
     //タイムを表示するのに使う
     float timer;
-    public Text timetext;
-    public bool timeflg = true;
+    public Text timeText;
+    public bool timeFlg = true;
 
     public GameObject player;
     public GameObject SDP;
@@ -25,10 +25,10 @@ public class GameManage : MonoBehaviour
     void FixedUpdate()
     {
         //タイムを表示
-        if (timeflg)
+        if (timeFlg)
         {
             timer += Time.fixedDeltaTime;
-            timetext.text = this.timer.ToString("F1");
+            timeText.text = this.timer.ToString("F1");
         }
         //コース上にSDPとSUPを置く
         if (timer < 4)

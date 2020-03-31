@@ -443,8 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d2e589f65526940b66e30055fdab8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timetext: {fileID: 1674637838}
-  timeflg: 1
+  timeText: {fileID: 1674637838}
+  timeFlg: 1
   player: {fileID: 1356399854}
   SDP: {fileID: 2361104896690103319, guid: b53c3f98db22da74989bb13d4dd2d1f3, type: 3}
   SUP: {fileID: 4738597903533038594, guid: 496bd5dae33bd0b4bb057ac42fcac9d1, type: 3}
@@ -1035,10 +1035,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497c718ccff00cc479197de4afdd9298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playersp: 1
-  goaltext: {fileID: 1429476704}
-  retrybutton: {fileID: 1829840499}
-  resultbutton: {fileID: 1897174278}
+  playerSpeed: 7
+  goalText: {fileID: 1429476704}
+  retryButton: {fileID: 1829840499}
+  resultButton: {fileID: 1897174278}
 --- !u!1 &1429476702
 GameObject:
   m_ObjectHideFlags: 0

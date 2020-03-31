@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    private Rigidbody rg;
-    public float playersp = 50f; //プレイヤーの速度
-    public Text goaltext;
-    public GameObject retrybutton;
-    public GameObject resultbutton;
+    private Rigidbody rigidBody;
+    public float playerSpeed; //プレイヤーの速度
+    public Text goalText;
+    public GameObject retryButton;
+    public GameObject resultButton;
 
     void Start()
     {
-        rg = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
     }
 
 
@@ -32,23 +32,23 @@ public class PlayerScript : MonoBehaviour
         //プレイヤーが前進
         if (Input.GetKey(KeyCode.Z))
         {
-            rg.AddForce(new Vector3(0, 0, playersp));
+            rigidBody.AddForce(new Vector3(0, 0, playerSpeed));
         }
 
         //落下したらゲームオーバー
         if (transform.position.y < -10)
         {
-            goaltext.text = "GAMEOVER";
-            retrybutton.SetActive(true);
-            rg.velocity = Vector3.zero;
+            goalText.text = "GAMEOVER";
+            retryButton.SetActive(true);
+            rigidBody.velocity = Vector3.zero;
         }
 
         if (transform.position.z >= 195)
         {
-            goaltext.text = "GOAL!!";
-            resultbutton.SetActive(true); //retrybuttonを表示する
-            rg.velocity = Vector3.zero;
-            GameObject.Find("GameManager").GetComponent<GameManage>().timeflg
+            goalText.text = "GOAL!!";
+            resultButton.SetActive(true); //retrybuttonを表示する
+            rigidBody.velocity = Vector3.zero;
+            GameObject.Find("GameManager").GetComponent<GameManage>().timeFlg
                 = false; //タイマーを止める
 
         }
@@ -60,13 +60,13 @@ public class PlayerScript : MonoBehaviour
         //SpeedUpPlateのとき
         if (collider.gameObject.tag == "SUP")
         {
-            playersp += 10f;
-            rg.AddForce(new Vector3(0, 0, 5));
+            playerSpeed += 1f;
+            rigidBody.AddForce(new Vector3(0, 0, 5));
         }
         //SpeedDownPlateのとき
         if (collider.gameObject.tag == "SDP")
         {
-            playersp -= 1f;
+            playerSpeed -= 1f;
 
         }
         //Goalのとき

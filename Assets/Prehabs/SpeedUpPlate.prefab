@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3176454139477354955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4738597903533038622}
@@ -43,7 +43,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.38203096, g: 0.4548456, b: 0.9528302, a: 1}
   m_Intensity: 10
-  m_Range: 0.7
+  m_Range: 0.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 4738597903533038623}
   - component: {fileID: 4738597903533038592}
   - component: {fileID: 4738597903533038593}
+  - component: {fileID: 8674230930906670779}
   m_Layer: 0
   m_Name: SpeedUpPlate
   m_TagString: SUP
@@ -119,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 4738597903533038594}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 6304400264274622646}
   m_Father: {fileID: 0}
@@ -184,3 +185,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8674230930906670779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4738597903533038594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e9878dfdee4c344b6ab6486fca5562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstracleRotate: {x: 1, y: 1, z: 1}

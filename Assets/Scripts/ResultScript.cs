@@ -6,35 +6,35 @@ using UnityEngine.SceneManagement;
 
 public class ResultScript : MonoBehaviour
 {
-    public Text fasttimetext;
-    public Text newtimetext;
-    private float goaltime;
-    private float fasttime;
+    public Text fastTimeText;
+    public Text newTimeText;
+    private float goalTime;
+    private float fastTime;
     void Start()
     {
-        goaltime = PlayerPrefs.GetFloat("goaltime");
+        goalTime = PlayerPrefs.GetFloat("goaltime");
 
         if (PlayerPrefs.HasKey("fasttime"))
         {
-            fasttime = PlayerPrefs.GetFloat("fasttime");
+            fastTime = PlayerPrefs.GetFloat("fasttime");
         }
         else
         {
-            fasttime = 0;
+            fastTime = 0;
         }
     }
     void Update()
     {
-        if (fasttime == 0 || goaltime < fasttime)
+        if (fastTime == 0 || goalTime < fastTime)
         {
-            fasttimetext.text = "Fasttime:" + goaltime.ToString("F1");
-            newtimetext.text = "Nowtime:" + goaltime.ToString("F1");
-            PlayerPrefs.SetFloat("fasttime", goaltime);
+            fastTimeText.text = "Fasttime:" + goalTime.ToString("F1");
+            newTimeText.text = "Nowtime:" + goalTime.ToString("F1");
+            PlayerPrefs.SetFloat("fasttime", goalTime);
         }
         else
         {
-            fasttimetext.text = "Fasttime:" + fasttime.ToString("F1");
-            newtimetext.text = "Nowtime:" + goaltime.ToString("F1");
+            fastTimeText.text = "Fasttime:" + fastTime.ToString("F1");
+            newTimeText.text = "Nowtime:" + goalTime.ToString("F1");
         }
 
     }
