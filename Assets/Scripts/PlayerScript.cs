@@ -10,6 +10,7 @@ public class PlayerScript : MonoBehaviour
     public Text goalText;
     public GameObject retryButton;
     public GameObject resultButton;
+    public GameObject Goal;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    void Update()
     {
         //プレイヤーの左右移動
         if (Input.GetKey(KeyCode.RightArrow))
@@ -43,10 +44,10 @@ public class PlayerScript : MonoBehaviour
             rigidBody.velocity = Vector3.zero;
         }
 
-        if (transform.position.z >= 195)
+        if (transform.position.z >= Goal.transform.position.z)
         {
             goalText.text = "GOAL!!";
-            resultButton.SetActive(true); //retrybuttonを表示する
+            resultButton.SetActive(true); //RetryButtonを表示する
             rigidBody.velocity = Vector3.zero;
             GameObject.Find("GameManager").GetComponent<GameManage>().timeFlg
                 = false; //タイマーを止める
@@ -60,16 +61,15 @@ public class PlayerScript : MonoBehaviour
         //SpeedUpPlateのとき
         if (collider.gameObject.tag == "SUP")
         {
-            playerSpeed += 1f;
+            playerSpeed += 0.2f;
             rigidBody.AddForce(new Vector3(0, 0, 5));
         }
         //SpeedDownPlateのとき
         if (collider.gameObject.tag == "SDP")
         {
-            playerSpeed -= 1f;
+            playerSpeed -= 0.4f;
 
         }
-        //Goalのとき
         
         Destroy(collider.gameObject);
     }

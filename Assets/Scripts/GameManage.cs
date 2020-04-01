@@ -6,19 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManage : MonoBehaviour
 {
-    //タイムを表示するのに使う
     float timer;
+    GameObject randomObject;
+
     public Text timeText;
     public bool timeFlg = true;
-
     public GameObject player;
     public GameObject SDP;
     public GameObject SUP;
-    GameObject randomObject;
+    public GameObject Goal;
+    public GameObject[] Stages;
+    public int StageLength;
+   
     
     void Start()
     {
-        
+        StageGenerate();
     }
 
     
@@ -31,7 +34,7 @@ public class GameManage : MonoBehaviour
             timeText.text = this.timer.ToString("F1");
         }
         //コース上にSDPとSUPを置く
-        if (timer < 4)
+        /*if (timer < 4)
         {
             int random = Random.Range(1, 31);
             if (random <= 1)
@@ -73,12 +76,7 @@ public class GameManage : MonoBehaviour
             {
                 randomObject.transform.position = new Vector3(x, 0, z);
             }
-        }
-    }
-
-    void Update()
-    {
-        
+        }*/
     }
 
     public void OnRetryButtonClick()
@@ -90,5 +88,22 @@ public class GameManage : MonoBehaviour
     {
         PlayerPrefs.SetFloat("goaltime",timer);
         SceneManager.LoadScene("ResultScene");
+    }
+
+    void StageGenerate()
+    {
+        //生成するステージの個数を決める
+        int StageCount = (int)Goal.transform.position.z / StageLength - 2;
+
+        //ステージをランダムに生成
+        for (int i = 0; i <= StageCount; i++)
+        {
+            int StageChip = Random.Range(0, Stages.Length);
+            Instantiate
+                (Stages[StageChip],
+                new Vector3(0, 0, (i + 1) * 10),
+                Quaternion.identity
+                );
+        }
     }
 }
