@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class PlayerScript : MonoBehaviour
 {
     private Rigidbody rigidBody;
-    public float playerSpeed; //プレイヤーの速度
+
+    public float playerSpeedZ; //プレイヤーの速度
+    public float playerSpeedX;
     public Text goalText;
     public GameObject retryButton;
     public GameObject resultButton;
     public GameObject Goal;
+    public GameObject SdpEffect;
+    public GameObject SupEffect;
 
     void Start()
     {
@@ -23,17 +27,17 @@ public class PlayerScript : MonoBehaviour
         //プレイヤーの左右移動
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position += transform.right * Time.deltaTime;
+            transform.position += transform.right * Time.deltaTime * playerSpeedX;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position -= transform.right * Time.deltaTime;
+            transform.position -= transform.right * Time.deltaTime * playerSpeedX;
         }
 
         //プレイヤーが前進
         if (Input.GetKey(KeyCode.Z))
         {
-            rigidBody.AddForce(new Vector3(0, 0, playerSpeed));
+            rigidBody.AddForce(new Vector3(0, -1, playerSpeedZ));
         }
 
         //落下したらゲームオーバー
@@ -61,14 +65,25 @@ public class PlayerScript : MonoBehaviour
         //SpeedUpPlateのとき
         if (collider.gameObject.tag == "SUP")
         {
-            playerSpeed += 0.2f;
+            playerSpeedZ += 0.2f;
             rigidBody.AddForce(new Vector3(0, 0, 5));
+
+            //エフェクト生成
+            Instantiate(
+                SupEffect,
+                collider.transform.position,
+                Quaternion.identity);
         }
         //SpeedDownPlateのとき
         if (collider.gameObject.tag == "SDP")
         {
-            playerSpeed -= 0.4f;
+            playerSpeedZ -= 0.4f;
 
+            //エフェクト生成
+            Instantiate(
+                SdpEffect,
+                collider.transform.position,
+                Quaternion.identity);
         }
         
         Destroy(collider.gameObject);
